@@ -1,8 +1,8 @@
 package com.storage.api_management.service;
 
 import com.storage.api_management.dto.CategoryCreateDTO;
-import com.storage.api_management.entity.Categories;
-import com.storage.api_management.repository.CategoriesRepo;
+import com.storage.api_management.entity.Category;
+import com.storage.api_management.repository.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,20 +12,20 @@ import java.util.List;
 public class CategoriesService {
 
     @Autowired
-    private CategoriesRepo categoriesRepo;
+    private CategoryRepo categoryRepo;
 
-    public List<Categories> getAllCategories(){
-        return categoriesRepo.findAll();
+    public List<Category> getAllCategories(){
+        return categoryRepo.findAll();
     }
 
-    public Categories createCategory(CategoryCreateDTO dto){
-        Categories category = new Categories();
+    public Category createCategory(CategoryCreateDTO dto){
+        Category category = new Category();
         category.setCatName(dto.getCatName());
 
-        return categoriesRepo.save(category);
+        return categoryRepo.save(category);
     }
 
-    public Categories getCategoryById(String id){
-        return categoriesRepo.findByIdCategory(id).orElseThrow(() -> new RuntimeException("Category not found with ID: "+id));
+    public Category getCategoryById(String id){
+        return categoryRepo.findByIdCategory(id).orElseThrow(() -> new RuntimeException("Category not found with ID: "+id));
     }
 }

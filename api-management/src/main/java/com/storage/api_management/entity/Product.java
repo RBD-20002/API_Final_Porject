@@ -7,7 +7,7 @@ import java.util.Map;
 
 @Data
 @Document(collection = "products")
-public class Products {
+public class Product {
 
     @Id
     private String idProduct;
