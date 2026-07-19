@@ -14,7 +14,7 @@ public class UsersService {
     private UserRepo userRepo;
 
     public User registerUser(UserCreateDTO dto){
-        if(userRepo.findByEmail(dto.getUserEmail()).isPresent()){
+        if(userRepo.findByUserEmail(dto.getUserEmail()).isPresent()){
             throw new RuntimeException("The email address is already registered");
         }
 
@@ -27,7 +27,7 @@ public class UsersService {
     }
 
     public User login(UserLoginDTO dto){
-        User user = userRepo.findByEmail(dto.getUserEmail()).orElseThrow(() -> new RuntimeException("User not found"));
+        User user = userRepo.findByUserEmail(dto.getUserEmail()).orElseThrow(() -> new RuntimeException("User not found"));
 
         if(!user.getUserPassword().equals(dto.getUserPassword())){
             throw new RuntimeException("Incorrect password");
