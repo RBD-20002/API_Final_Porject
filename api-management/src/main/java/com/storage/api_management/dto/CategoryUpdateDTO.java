@@ -12,4 +12,5 @@ import lombok.Setter;
 public class CategoryUpdateDTO {
     private String idCategory;
     private String catName;
+    private String catIconkey;
 }

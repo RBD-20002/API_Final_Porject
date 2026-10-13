@@ -1,6 +1,7 @@
 package com.storage.api_management.controller;
 
 import com.storage.api_management.dto.ProductCreateDTO;
+import com.storage.api_management.dto.ProductUpdateDTO;
 import com.storage.api_management.entity.Product;
 import com.storage.api_management.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,19 +17,24 @@ public class ProductController {
     @Autowired
     private ProductsService productsService;
 
-    @GetMapping("/all")
-    public List<Product> allProduct(){
-        return productsService.getAllProduct();
+    @GetMapping("/user/{idUser}")
+    public List<Product> allProductByUser(@PathVariable String idUser) {
+        return productsService.getAllProductByUser(idUser);
     }
 
-    @GetMapping("/category/{id}")
-    public List<Product> allProductByCategories(@PathVariable String id){
-        return productsService.getProductByCategories(id);
+    @GetMapping("/category/{idCategory}/user/{idUser")
+    public List<Product> allProductByCategoriesAndUser(@PathVariable String idCategory, @PathVariable String idUser){
+        return productsService.getProductsByCategoryAndUser(idCategory, idUser);
     }
 
     @PostMapping
     public Product createProduct(@RequestBody ProductCreateDTO dto){
         return productsService.createProduct(dto);
+    }
+
+    @PutMapping
+    public Product updateProduct(@RequestBody ProductUpdateDTO dto) {
+        return productsService.updateProduct(dto);
     }
 
     @DeleteMapping("/{id}")

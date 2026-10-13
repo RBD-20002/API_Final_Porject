@@ -1,6 +1,7 @@
 package com.storage.api_management.controller;
 
 import com.storage.api_management.dto.CategoryCreateDTO;
+import com.storage.api_management.dto.CategoryUpdateDTO;
 import com.storage.api_management.entity.Category;
 import com.storage.api_management.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,14 +17,19 @@ public class CategoryController {
     @Autowired
     private CategoriesService categoriesService;
 
-    @GetMapping
-    public List<Category> allCategories(){
-        return categoriesService.getAllCategories();
+    @GetMapping("/user/{idUser}")
+    public List<Category> getCategoriesByUser(@PathVariable String idUser){
+        return categoriesService.getCategoriesByUser(idUser);
     }
 
     @PostMapping
     public Category createCategories(@RequestBody CategoryCreateDTO dto){
         return categoriesService.createCategory(dto);
+    }
+
+    @PutMapping
+    public Category updateCategory(@RequestBody CategoryUpdateDTO dto) {
+        return categoriesService.updateCategory(dto);
     }
 
     @GetMapping("/{id}")

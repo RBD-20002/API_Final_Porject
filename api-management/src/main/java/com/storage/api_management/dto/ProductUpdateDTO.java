@@ -16,6 +16,8 @@ public class ProductUpdateDTO {
     private Integer proAmount;
     private Double proPrice;
     private String proMarketName;
+    private String proStatus;
+    private String imageUrl = null;
     private String idCategory;
     private Map<String, Object> dynamicAttributes;
 }

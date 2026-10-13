@@ -15,6 +15,9 @@ public class Product {
     private Integer proAmount;
     private Double proPrice;
     private String proMarketName;
+    private String proStatus;
+    private String imageUrl = null;
     private String idCategory;
+    private String idUser;
     private Map<String,Object> dynamicAttributes;
 }

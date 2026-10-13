@@ -11,4 +11,6 @@ public class Category {
     @Id
     private String idCategory;
     private String catName;
+    private String catIconKey;
+    private String idUser;
 }

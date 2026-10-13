@@ -11,4 +11,6 @@ import lombok.Setter;
 @Getter
 public class CategoryCreateDTO {
     private String catName;
+    private String catIconKey;
+    private String idUser;
 }
